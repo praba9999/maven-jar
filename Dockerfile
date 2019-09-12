@@ -3,7 +3,7 @@ FROM maven:3.3.9-jdk-8-alpine AS build
 WORKDIR /usr/src/app
 ADD . /usr/src/app/
 
-RUN apk add --no-cache procps &&  mvn clean deploy 
+RUN apk add --no-cache procps &&  mvn clean install 
 
 FROM openjdk:8-jre-alpine
 
