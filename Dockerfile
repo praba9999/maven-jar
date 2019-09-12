@@ -1,3 +1,5 @@
+FROM centos 6
+
 FROM maven:3.3.9-jdk-8-alpine AS build
 
 WORKDIR /usr/src/app
