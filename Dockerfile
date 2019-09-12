@@ -14,7 +14,7 @@ EXPOSE 8802
 
 ENTRYPOINT ["java", "-jar", ,"rahul-charan.jar"]
 
-RUN apk add --no-cache ca-certificates && update-ca-certificates
+RUN apt-get update && apt-get -y install ca-certificates
 ADD https://get.aquasec.com/microscanner .
 RUN chmod +x microscanner
 RUN ./microscanner OTdjYTk4ZGE3MTgw
