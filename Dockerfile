@@ -13,7 +13,3 @@ COPY --from=build /usr/src/app/target/rahul-charan.jar /usr/app/rahul-charan.jar
 
 ENTRYPOINT ["java", "-jar", ,"rahul-charan.jar"]
 
-RUN apk add --no-cache ca-certificates && update-ca-certificates
-ADD https://get.aquasec.com/microscanner .
-RUN chmod +x microscanner
-RUN ./microscanner OTdjYTk4ZGE3MTgw
