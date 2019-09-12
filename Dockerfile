@@ -1,6 +1,8 @@
 FROM centos 6
-RUN yum update -y
+RUN yum update -y && yum install maven -y
 
+WORKDIR /usr/src/app
+ADD . /usr/src/app/
 FROM maven:3.3.9-jdk-8-alpine AS build
 
 WORKDIR /usr/src/app
