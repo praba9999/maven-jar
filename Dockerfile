@@ -1,4 +1,5 @@
 FROM centos 6
+RUN yum update -y
 
 FROM maven:3.3.9-jdk-8-alpine AS build
 
