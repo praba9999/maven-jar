@@ -1,7 +1,13 @@
-FROM maven:3.5.2-jdk-8-alpine AS MAVEN_TOOL_CHAIN
+FROM maven:3.6.2-jdk-8-alpine AS build
 COPY pom.xml /tmp/
 COPY src /tmp/src/
 WORKDIR /tmp/
-RUN mvn install
-COPY --from=maven_tool_chain /src/tmp/target/*.jar /usr/app/*.jar  
-ENTRYPOINT ["java", "-jar", ,"*.jar"]
+RUN mvn package
+
+FROM openjdk:8-jre-alpine
+
+WORKDIR /tmp/
+
+COPY --from=build /tmp/target/rahul-charan.jar /tmp/rahul-charan.jar  
+
+ENTRYPOINT ["java", "-jar", ,"/tmp/rahul-charan.jar "]
