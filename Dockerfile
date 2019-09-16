@@ -1,4 +1,5 @@
-FROM maven:3.3.9-jdk-8-alpine AS build
+FROM alpine AS build
+RUN apk add --no-cache procps && apk add --no-cache maven 
 
 WORKDIR /usr/src/app
 ADD . /usr/src/app/
