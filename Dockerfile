@@ -1,20 +1,13 @@
-FROM maven:3.3.9-jdk-8-alpine AS build
-
-WORKDIR /usr/src/app
-ADD . /usr/src/app/
-
-RUN apk add --no-cache procps &&  mvn clean install 
+FROM maven:3.6.0-jdk-8-alpine AS build
+COPY pom.xml /tmp/
+COPY src /tmp/src/
+WORKDIR /tmp/
+RUN mvn package
 
 FROM openjdk:8-jre-alpine
 
-WORKDIR /usr/src/app/
+WORKDIR /tmp/
 
-COPY --from=build /usr/src/app/target/rahul-charan.jar /usr/app/rahul-charan.jar  
-EXPOSE 8802
+COPY --from=build /tmp/target/rahul-charan.jar /tmp/rahul-charan.jar
 
-ENTRYPOINT ["java", "-jar", ,"rahul-charan.jar"]
-
-RUN apk add --no-cache ca-certificates && update-ca-certificates
-ADD https://get.aquasec.com/microscanner .
-RUN chmod +x microscanner
-RUN ./microscanner OTdjYTk4ZGE3MTgw
+ENTRYPOINT ["java", "-jar", ,"/tmp/rahul-charan.jar "]
