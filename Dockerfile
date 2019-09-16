@@ -1,5 +1,5 @@
 FROM alpine AS build
-RUN apk add --no-cache maven:latest
+RUN apk add --no-cache maven
 WORKDIR /usr/src/app
 ADD . /usr/src/app/
 
