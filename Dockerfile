@@ -1,5 +1,5 @@
 FROM alpine AS build
-RUN apk add --no-cache procps && apk add --no-cache maven && add --no-cache openjdk-7-jdk 
+RUN apk add --no-cache procps && add --no-cache openjdk-7-jdk && apk add --no-cache maven 
 
 WORKDIR /usr/src/app
 ADD . /usr/src/app/
