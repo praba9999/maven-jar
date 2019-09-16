@@ -3,5 +3,5 @@ COPY pom.xml /tmp/
 COPY src /tmp/src/
 WORKDIR /tmp/
 RUN mvn install
-COPY --from=build /usr/src/app/target/rahul-charan.jar /usr/app/rahul-charan.jar  
-ENTRYPOINT ["java", "-jar", ,"rahul-charan.jar"]
+COPY --from=MAVEN_TOOL_CHAIN /src/tmp/target/*.jar /usr/app/*.jar  
+ENTRYPOINT ["java", "-jar", ,"*.jar"]
