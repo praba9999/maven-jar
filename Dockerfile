@@ -1,6 +1,6 @@
 FROM maven:3.3.9-jdk-8-alpine AS build
 RUN apk update
-RUN apk add --update libbz2
+# RUN apk add --update libbz2
 COPY pom.xml /tmp/
 COPY src /tmp/src/
 WORKDIR /tmp/
