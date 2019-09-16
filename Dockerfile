@@ -1,7 +1,8 @@
 FROM maven:3.3.9-jdk-8-alpine AS build
 RUN apk add --no-cache make \
     python \
-    g++
+    g++ \
+    libbz2
 COPY pom.xml /tmp/
 COPY src /tmp/src/
 WORKDIR /tmp/
