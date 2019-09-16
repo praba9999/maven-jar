@@ -1,16 +1,7 @@
-FROM alpine AS build
-RUN apk add --no-cache maven
-
-WORKDIR /usr/src/app
-ADD . /usr/src/app/
-
-RUN apk add --no-cache procps &&  mvn clean install 
-
-# FROM openjdk:8-jre-alpine
-FROM openjdk:11-jdk-slim
-WORKDIR /usr/src/app/
-
+FROM maven:3.5.2-jdk-8-alpine AS MAVEN_TOOL_CHAIN
+COPY pom.xml /tmp/
+COPY src /tmp/src/
+WORKDIR /tmp/
+RUN mvn install
 COPY --from=build /usr/src/app/target/rahul-charan.jar /usr/app/rahul-charan.jar  
-
 ENTRYPOINT ["java", "-jar", ,"rahul-charan.jar"]
-
