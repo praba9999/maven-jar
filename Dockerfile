@@ -59,12 +59,26 @@
 # COPY --from=build /tmp/target/rahul-charan.jar /tmp/rahul-charan.jar
 # ENTRYPOINT ["java", "-jar", ,"/tmp/rahul-charan.jar "]
 
-FROM maven:3.3.9-jdk-8-alpine AS build
-RUN apk update bzip2
-RUN apk add --no-cache \
-	x265 \
-	xvidcore && \
- echo "**** installed all pending pacthes ****" 
+# FROM maven:3.3.9-jdk-8-alpine AS build
+# RUN apk update bzip2
+# RUN apk add --no-cache \
+# 	x265 \
+# 	xvidcore && \
+#  echo "**** installed all pending pacthes ****" 
+
+# COPY pom.xml /tmp/
+# WORKDIR /tmp/
+# RUN mvn package
+
+# FROM openjdk:8-jre-alpine
+
+# WORKDIR /tmp/
+# COPY --from=build /tmp/target/rahul-charan.jar /tmp/rahul-charan.jar
+# ENTRYPOINT ["java", "-jar", ,"/tmp/rahul-charan.jar "]
+
+FROM FROM alpine:3.7 AS build
+RUN openjdk:8-jre-alpine
+RUN apk add maven
 
 COPY pom.xml /tmp/
 WORKDIR /tmp/
