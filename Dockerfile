@@ -76,7 +76,7 @@
 # COPY --from=build /tmp/target/rahul-charan.jar /tmp/rahul-charan.jar
 # ENTRYPOINT ["java", "-jar", ,"/tmp/rahul-charan.jar "]
 FROM alpine:3.7 AS build
-RUN openjdk:8-jre-alpine
+# RUN openjdk:8-jre-alpine
 RUN apk add maven
 
 COPY pom.xml /tmp/
