@@ -1,4 +1,4 @@
-
+####
 # FROM maven:3.3.9-jdk-8-alpine AS build
 # RUN apk update
 # RUN apk add --no-cache \
